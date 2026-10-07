@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alas | Bekalu - Fashion & Content</title>
+    <title>Alas | Bekalu - Tailor & Content Creator</title>
     <style>
         /* --- CSS Variables for Theme Toggling --- */
         :root {
@@ -11,7 +11,7 @@
             --text-color: #121212;
             --nav-bg: rgba(255, 255, 255, 0.9);
             --card-bg: #f5f5f5;
-            --accent: #d4af37; /* Subtle gold */
+            --accent: #d4af37;
             --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -101,7 +101,7 @@
 
         .hero p {
             font-size: clamp(1.2rem, 2vw, 1.5rem);
-            max-width: 600px;
+            max-width: 650px;
             font-weight: 300;
             opacity: 0.8;
         }
@@ -130,6 +130,8 @@
 
         .card {
             background-color: var(--card-bg);
+            background-size: cover;
+            background-position: center;
             aspect-ratio: 4/5;
             display: flex;
             flex-direction: column;
@@ -138,4 +140,201 @@
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            cursor:
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0.8;
+            transition: opacity var(--transition);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform var(--transition), opacity var(--transition);
+            color: #fff;
+        }
+
+        .card:hover .card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 5rem 10%;
+            text-align: center;
+            background-color: var(--card-bg);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">Alas.</div>
+        <div class="controls">
+            <!-- Theme Toggle -->
+            <button id="themeToggle" aria-label="Toggle Dark Mode">
+                <span class="icon">🌙</span>
+            </button>
+            <!-- Language Toggle -->
+            <button id="langToggle">AM</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="translatable" 
+            data-en="Bekalu." 
+            data-am="በካሉ.">
+            Bekalu.
+        </h1>
+        <p class="translatable" 
+           data-en="Bridging bespoke tailoring, high fashion, and digital storytelling. Master tailor and content creator bringing physical garments into the digital space." 
+           data-am="በባህል ልብስ ስፌት፣ በከፍተኛ ፋሽን እና በዲጂታል ትረካ መካከል ያለውን ድልድይ ማገናኘት። የተካነ ልብስ ሰፊ እና የይዘት ፈጣሪ።">
+           Bridging bespoke tailoring, high fashion, and digital storytelling. Master tailor and content creator bringing physical garments into the digital space.
+        </p>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <h2 class="section-title translatable" 
+            data-en="The Vision" 
+            data-am="ራዕይ">
+            The Vision
+        </h2>
+        <p class="translatable" style="font-size: 1.2rem; max-width: 800px; font-weight: 300;"
+           data-en="Known creatively as Alas, my work is rooted in the tactile art of tailoring. From drafting patterns and sewing custom garments to directing the visual campaigns that launch them, I control the creative process from the first stitch to the final post." 
+           data-am="በፈጠራ ስሜ 'አላስ' በመባል የምታወቅ ሲሆን፤ ስራዎቼም በልብስ ስፌት ጥበብ ላይ የተመሰረቱ ናቸው። ዲዛይን ከማውጣት እና ልብስ ከመስፋት ጀምሮ እስከ ማስተዋወቂያ ካምፔኖች ድረስ የፈጠራ ሂደቱን እመራለሁ።">
+           Known creatively as Alas, my work is rooted in the tactile art of tailoring. From drafting patterns and sewing custom garments to directing the visual campaigns that launch them, I control the creative process from the first stitch to the final post.
+        </p>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="section">
+        <h2 class="section-title translatable" 
+            data-en="Selected Work" 
+            data-am="የተመረጡ ስራዎች">
+            Selected Work
+        </h2>
+        <div class="grid">
+            
+            <!-- Tailoring & Construction -->
+            <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQfhfV4UD_Yvg0PpllnEKCDUgGVsDB6000gnVvqSWQXLxbD8t73QZgene7jx6pno8mw4RuLHBpJYS1yIk0');">
+                <div class="card-content">
+                    <h3 class="translatable" data-en="Bespoke Construction" data-am="ብጁ ልብስ ስፌት">Bespoke Construction</h3>
+                    <p class="translatable" data-en="Pattern making & tailored suits" data-am="የልብስ ዲዛይን እና ስፌት">Pattern making & tailored suits</p>
+                </div>
+            </div>
+
+            <!-- Measurements & Fitting -->
+            <div class="card" style="background-image: url('https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT2VvgqZaVLvR72Id1a-OtTpqzCH-EZdM5r6x5wYUB4fNermrHwjjzDc5vhR45v_0gIsW6ss500lr7Gpe4');">
+                <div class="card-content">
+                    <h3 class="translatable" data-en="The Fitting Room" data-am="የልብስ ልኬት">The Fitting Room</h3>
+                    <p class="translatable" data-en="Precision measurements & alterations" data-am="ትክክለኛ ልኬት እና ማስተካከያ">Precision measurements & alterations</p>
+                </div>
+            </div>
+
+            <!-- Studio Content Creation -->
+            <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSOM3PlJJkBg_XKM0AMSOhwz4znMyTGaOgaNK3B_yjY7JagPk1j-d-l8xo09DR_6VmY4hAECHA8bjR7BsI');">
+                <div class="card-content">
+                    <h3 class="translatable" data-en="Studio Sessions" data-am="ስቱዲዮ ስራዎች">Studio Sessions</h3>
+                    <p class="translatable" data-en="Content creation behind the machine" data-am="ከስፌት ማሽን ጀርባ ያለ የይዘት ፈጠራ">Content creation behind the machine</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2 class="translatable" 
+            data-en="Let's create something iconic." 
+            data-am="አብረን ድንቅ ስራዎችን እንፍጠር።" 
+            style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">
+            Let's create something iconic.
+        </h2>
+        
+        <div class="social-links">
+            <a href="mailto:your-email@example.com" class="translatable" data-en="Email" data-am="ኢሜይል">Email</a>
+            <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@yourhandle" target="_blank">TikTok</a>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeBtn = document.getElementById('themeToggle');
+        const iconSpan = themeBtn.querySelector('.icon');
+        
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.body.setAttribute('data-theme', 'dark');
+                iconSpan.textContent = '☀️';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // --- Language Toggle Logic ---
+        const langBtn = document.getElementById('langToggle');
+        const translatableElements = document.querySelectorAll('.translatable');
+        let currentLang = 'en'; 
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'am' : 'en';
+            
+            langBtn.textContent = currentLang === 'en' ? 'AM' : 'EN';
+
+            translatableElements.forEach(el => {
+                if (currentLang === 'am') {
+                    el.textContent = el.getAttribute('data-am');
+                    el.style.fontFamily = "'Nyala', 'Abyssinica SIL', sans-serif"; 
+                } else {
+                    el.textContent = el.getAttribute('data-en');
+                    el.style.fontFamily = ""; 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
