@@ -81,7 +81,7 @@
             50% { opacity: 1; transform: scale(1.05); }
         }
 
-        /* --- Navigation --- */
+        /* --- Navigation & Logo --- */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -92,13 +92,36 @@
             z-index: 1000;
             mix-blend-mode: difference;
         }
+        
         .logo {
-            font-family: var(--font-head);
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        /* This keeps your image logo the perfect size */
+        .logo img {
+            height: 40px; 
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* If your logo is solid white, this will invert it to black in light mode */
+        [data-theme="light"] header {
+            mix-blend-mode: normal;
+        }
+        [data-theme="light"] .logo img {
+            filter: invert(1);
+        }
+        [data-theme="light"] .controls button {
+            border-color: #000;
+            color: #000;
+        }
+        [data-theme="light"] .controls button:hover {
+            background: #000;
             color: #fff;
         }
+
         .controls button {
             background: none;
             border: 1px solid #fff;
@@ -294,6 +317,7 @@
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             header { padding: 1.5rem; }
+            .logo img { height: 30px; }
             .grid { display: flex; flex-direction: column; gap: 2rem; }
             .item:nth-child(1), .item:nth-child(2), .item:nth-child(3) { margin-top: 0; height: 50vh; }
             .spinning-badge { display: none; }
@@ -311,8 +335,12 @@
         <h1>ALAS.</h1>
     </div>
 
+    <!-- Header with Image Logo -->
     <header>
-        <div class="logo">Alas.</div>
+        <a href="#" class="logo hover-target">
+            <!-- Ensure your image file is named logo.svg and uploaded to the same folder -->
+            <img src="logo.svg" alt="ALAS Logo">
+        </a>
         <div class="controls">
             <button id="themeBtn" class="hover-target">Light</button>
             <button id="langBtn" class="hover-target">AM</button>
