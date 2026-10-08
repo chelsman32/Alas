@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Space+Grotesk:wght@300;500&display=swap');
 
         :root {
-            /* DARK MODE (Untouched) */
+            /* DARK MODE */
             --bg: #0a0a0a;
             --text: #f4f4f4;
             --accent: #ff2a2a;
@@ -18,9 +18,9 @@
         }
 
         [data-theme="light"] {
-            /* NEW LIGHT MODE (Premium Linen / Stone) */
-            --bg: #e0dbd1; 
-            --text: #111111;
+            /* NEW LIGHT BLUE MODE */
+            --bg: #e3f2fd; /* Light Blue */
+            --text: #0d1b2a; /* Deep Navy Blue/Black for contrast */
             --accent: #d11111;
         }
 
@@ -114,24 +114,32 @@
             filter: invert(1);
         }
         [data-theme="light"] .controls button {
-            border-color: #000;
-            color: #000;
+            border-color: var(--text);
+            color: var(--text);
         }
         [data-theme="light"] .controls button:hover {
-            background: #000;
-            color: #fff;
+            background: var(--text);
+            color: var(--bg);
         }
 
+        .controls {
+            display: flex;
+            gap: 1.5rem; /* Space between buttons */
+        }
+
+        /* BIGGER BUTTONS */
         .controls button {
             background: none;
-            border: 1px solid #fff;
+            border: 2px solid #fff;
             color: #fff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            margin-left: 1rem;
+            padding: 1rem 2rem; /* Much larger padding */
+            border-radius: 50px;
             font-family: var(--font-body);
+            font-size: 1.2rem; /* Larger text */
+            font-weight: 700; /* Bolder text */
             text-transform: uppercase;
             transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
         .controls button:hover {
             background: #fff;
@@ -183,7 +191,7 @@
             width: 100%;
             padding: 2rem 0;
             background: var(--accent);
-            color: var(--bg);
+            color: #fff; /* Always white text on red background */
             overflow: hidden;
             white-space: nowrap;
             transform: rotate(-2deg);
@@ -316,8 +324,9 @@
 
         /* Mobile Adjustments */
         @media (max-width: 768px) {
-            header { padding: 1.5rem; }
+            header { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
             .logo img { height: 30px; }
+            .controls button { padding: 0.8rem 1.5rem; font-size: 1rem; }
             .grid { display: flex; flex-direction: column; gap: 2rem; }
             .item:nth-child(1), .item:nth-child(2), .item:nth-child(3) { margin-top: 0; height: 50vh; }
             .spinning-badge { display: none; }
@@ -335,7 +344,7 @@
         <h1>ALAS.</h1>
     </div>
 
-    <!-- Header with Image Logo -->
+    <!-- Header with Image Logo & BIG Buttons -->
     <header>
         <a href="#" class="logo hover-target">
             <img src="logo.svg" alt="ALAS Logo">
@@ -385,7 +394,6 @@
 
         <div class="grid">
             
-            <!-- Image 1: The Cut (Traditional/Fabric Context) -->
             <div class="item reveal hover-target">
                 <img src="https://images.unsplash.com/photo-1563820986790-2ff77c1d763a?q=80&w=1200&auto=format&fit=crop" alt="Ethiopian fashion and tailoring context">
                 <div class="item-overlay">
@@ -394,7 +402,6 @@
                 </div>
             </div>
 
-            <!-- Image 2: The Machine (Tailoring/Sewing Context) -->
             <div class="item reveal hover-target" style="transition-delay: 0.2s;">
                 <img src="https://images.unsplash.com/photo-1605369651581-9b16ea9825b4?q=80&w=1200&auto=format&fit=crop" alt="Tailor working on machine with African fabric">
                 <div class="item-overlay">
@@ -403,7 +410,6 @@
                 </div>
             </div>
 
-            <!-- Image 3: The Content (Stunning Ethiopian Fashion Portrait) -->
             <div class="item reveal hover-target">
                 <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=1600&auto=format&fit=crop" alt="Stunning Ethiopian fashion portrait">
                 <div class="item-overlay">
@@ -424,35 +430,30 @@
 
         <div class="social-grid">
             
-            <!-- Instagram -->
             <a href="https://instagram.com/belete_bekalu" target="_blank" class="social-link hover-target" aria-label="Instagram">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
             </a>
 
-            <!-- Telegram -->
             <a href="https://t.me/zrealone" target="_blank" class="social-link hover-target" aria-label="Telegram">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.12-.05-.18-.05-.05-.15-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01-.04.01.12.01.29z"/>
                 </svg>
             </a>
 
-            <!-- TikTok -->
             <a href="https://tiktok.com/@bekalubelete1" target="_blank" class="social-link hover-target" aria-label="TikTok">
                 <svg viewBox="0 0 24 24">
                     <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.95-.54 3.93-1.66 5.45-1.11 1.53-2.65 2.62-4.47 3.1-1.8.48-3.76.43-5.52-.22-1.74-.63-3.23-1.84-4.26-3.37-1.03-1.52-1.47-3.41-1.25-5.27.23-1.85 1.13-3.56 2.5-4.83 1.36-1.28 3.19-2.07 5.1-2.18.25-.01.5-.01.76-.01v4.11c-2.45-.11-4.71 1.45-5.39 3.79-.38 1.32-.17 2.8.56 3.92.74 1.12 1.99 1.83 3.32 1.95 1.33.12 2.67-.32 3.69-1.2 1.03-.89 1.6-2.22 1.62-3.61v-14.9h4.37z"/>
                 </svg>
             </a>
 
-            <!-- X (Twitter) -->
             <a href="https://x.com/bekapo24" target="_blank" class="social-link hover-target" aria-label="X (Twitter)">
                 <svg viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
             </a>
 
-            <!-- Email -->
             <a href="mailto:chelsman25@gmail.com" class="social-link hover-target" aria-label="Email">
                 <svg viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
